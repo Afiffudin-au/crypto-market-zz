@@ -31,9 +31,11 @@ export default function Home() {
         {isFetching && (
           <Spinner color='blue.500' position='fixed' top='5' right='10' />
         )}
-        <Fade in={isSuccess}>
-          <CoinTable dataCoins={data} />
-        </Fade>
+        {isSuccess && (
+          <Fade in={isSuccess}>
+            <CoinTable dataCoins={data} />
+          </Fade>
+        )}
 
         {!isLoading && (
           <Box

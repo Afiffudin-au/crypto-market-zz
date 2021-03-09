@@ -1,4 +1,4 @@
-import { Text } from '@chakra-ui/layout'
+import { Box, Text } from '@chakra-ui/layout'
 import { Fade, Spinner } from '@chakra-ui/react'
 import { Progress } from '@chakra-ui/progress'
 import Head from 'next/head'
@@ -8,7 +8,7 @@ import { dehydrate } from 'react-query/hydration'
 import CoinTable from '../components/CoinTable/CoinTable'
 import Layout from '../components/Layout/Layout'
 import styles from '../styles/Home.module.css'
-
+import { Button } from '@chakra-ui/react'
 export default function Home() {
   const [page, setPage] = useState<number>(1)
   const { data, isError, isLoading, isFetching, isSuccess } = useQuery(
@@ -31,10 +31,35 @@ export default function Home() {
         {isFetching && (
           <Spinner color='blue.500' position='fixed' top='5' right='10' />
         )}
-        {isSuccess && (
-          <Fade in={isSuccess}>
-            <CoinTable dataCoins={data} />
-          </Fade>
+        <Fade in={isSuccess}>
+          <CoinTable dataCoins={data} />
+        </Fade>
+
+        {!isLoading && (
+          <Box
+            style={{ columnGap: '5px' }}
+            display='flex'
+            justifyContent='flex-end'
+            alignItems='center'
+            mt='5'
+            p='5'>
+            <Button
+              onClick={() => setPage((current) => current - 1)}
+              disabled={page === 1 ? true : false}
+              colorScheme='blue'
+              size='sm'>
+              Previous
+            </Button>
+            <Text fontWeight='bold' color='blue.500'>
+              {page}
+            </Text>
+            <Button
+              onClick={() => setPage((current) => current + 1)}
+              colorScheme='blue'
+              size='sm'>
+              Next
+            </Button>
+          </Box>
         )}
       </Layout>
     </div>

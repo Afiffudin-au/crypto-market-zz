@@ -41,7 +41,7 @@ function CoinTable({ dataCoins }: { dataCoins: Required<any> }) {
     }
   }
   return (
-    <Box border='1px' borderColor='gray.300' borderRadius='8' padding='2'>
+    <Box border='1px' borderColor='gray.300' borderRadius='8'>
       <Table variant='simple'>
         <Thead>
           <Tr>

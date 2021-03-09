@@ -31,15 +31,10 @@ export default function Home() {
         {isFetching && (
           <Spinner color='blue.500' position='fixed' top='5' right='10' />
         )}
-        {isSuccess && (
-          <Fade in={isSuccess}>
-            <CoinTable dataCoins={data} />
-          </Fade>
-        )}
+        {isSuccess && <CoinTable dataCoins={data} />}
 
         {!isLoading && (
           <Box
-            style={{ columnGap: '5px' }}
             display='flex'
             justifyContent='flex-end'
             alignItems='center'
@@ -49,7 +44,8 @@ export default function Home() {
               onClick={() => setPage((current) => current - 1)}
               disabled={page === 1 ? true : false}
               colorScheme='blue'
-              size='sm'>
+              size='sm'
+              m='2'>
               Previous
             </Button>
             <Text fontWeight='bold' color='blue.500'>
@@ -58,7 +54,8 @@ export default function Home() {
             <Button
               onClick={() => setPage((current) => current + 1)}
               colorScheme='blue'
-              size='sm'>
+              size='sm'
+              m='2'>
               Next
             </Button>
           </Box>

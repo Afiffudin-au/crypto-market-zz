@@ -31,36 +31,39 @@ export default function Home() {
         {isFetching && (
           <Spinner color='blue.500' position='fixed' top='5' right='10' />
         )}
-        {isSuccess && <CoinTable dataCoins={data} />}
-
-        {!isLoading && (
-          <Box
-            display='flex'
-            justifyContent='flex-end'
-            alignItems='center'
-            mt='5'
-            p='5'>
-            <Button
-              onClick={() => setPage((current) => current - 1)}
-              disabled={page === 1 ? true : false}
-              colorScheme='blue'
-              size='sm'
-              m='2'>
-              Previous
-            </Button>
-            <Text fontWeight='bold' color='blue.500'>
-              {page}
-            </Text>
-            <Button
-              onClick={() => setPage((current) => current + 1)}
-              colorScheme='blue'
-              size='sm'
-              m='2'>
-              Next
-            </Button>
-          </Box>
+        {isSuccess && (
+          <Fade in={isSuccess}>
+            <CoinTable dataCoins={data} />
+          </Fade>
         )}
       </Layout>
+      {!isLoading && (
+        <Box
+          display='flex'
+          justifyContent='flex-end'
+          alignItems='center'
+          mt='5'
+          p='5'>
+          <Button
+            onClick={() => setPage((current) => current - 1)}
+            disabled={page === 1 ? true : false}
+            colorScheme='blue'
+            size='sm'
+            m='2'>
+            Previous
+          </Button>
+          <Text fontWeight='bold' color='blue.500'>
+            {page}
+          </Text>
+          <Button
+            onClick={() => setPage((current) => current + 1)}
+            colorScheme='blue'
+            size='sm'
+            m='2'>
+            Next
+          </Button>
+        </Box>
+      )}
     </div>
   )
 }

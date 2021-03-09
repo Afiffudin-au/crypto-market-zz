@@ -21,7 +21,7 @@ export default function Home() {
   )
   return (
     <div className={styles.home}>
-      {isLoading && <Progress size='xs' isIndeterminate />}
+      {isLoading && <Progress size='xs' />}
       {isError && <Text color='red.500'>Error</Text>}
       <Head>
         <title>Create Next App</title>
@@ -29,13 +29,7 @@ export default function Home() {
       </Head>
       <Layout>
         {isFetching && (
-          <Spinner
-            color='blue.500'
-            position='fixed'
-            top='5'
-            right='10'
-            isIndeterminate
-          />
+          <Spinner color='blue.500' position='fixed' top='5' right='10' />
         )}
         {isSuccess && (
           <Fade in={isSuccess}>

@@ -1,6 +1,7 @@
 import { Table, Thead, Tbody, Tr, Th, Box, Text } from '@chakra-ui/react'
 import CoinTableItem from './CoinTableItem'
 import { useState } from 'react'
+import { BiSort } from 'react-icons/bi'
 interface DataCoins {
   name: string
   image: string
@@ -19,6 +20,14 @@ const orderBy = (dataCoins: any, key: string, by: string) => {
   }
   return dataCoins
 }
+const TextItem = ({ label, icon = true }: any) => {
+  return (
+    <Text fontWeight='bold' color='black' display='flex' alignItems='center'>
+      {label}
+      {icon && <BiSort style={{ color: '#2b6cb0', marginLeft: '5px' }} />}
+    </Text>
+  )
+}
 function CoinTable({ dataCoins }: { dataCoins: Required<any> }) {
   const [key, setKey] = useState<string>('')
   const [by, setBy] = useState<string>('')
@@ -36,33 +45,25 @@ function CoinTable({ dataCoins }: { dataCoins: Required<any> }) {
       <Table variant='simple'>
         <Thead>
           <Tr>
-            <Th>#</Th>
+            <Th cursor='pointer'>
+              <TextItem label='#' icon={false} />
+            </Th>
             <Th cursor='pointer' onClick={() => handleSort('name')}>
-              <Text fontWeight='bold' color='black'>
-                Name
-              </Text>
+              <TextItem label='name' />
             </Th>
             <Th cursor='pointer' onClick={() => handleSort('current_price')}>
-              <Text fontWeight='bold' color='black'>
-                Price
-              </Text>
+              <TextItem label='price' />
             </Th>
             <Th
               cursor='pointer'
               onClick={() => handleSort('price_change_percentage_24h')}>
-              <Text fontWeight='bold' color='black'>
-                24h %
-              </Text>
+              <TextItem label='24h %' />
             </Th>
             <Th cursor='pointer' onClick={() => handleSort('market_cap')}>
-              <Text fontWeight='bold' color='black'>
-                Market Cap
-              </Text>
+              <TextItem label='Market Cap' />
             </Th>
             <Th cursor='pointer' onClick={() => handleSort('total_volume')}>
-              <Text fontWeight='bold' color='black'>
-                Total Volume
-              </Text>
+              <TextItem label='Total Volume' />
             </Th>
           </Tr>
         </Thead>

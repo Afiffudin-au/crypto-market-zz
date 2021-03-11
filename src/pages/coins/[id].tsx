@@ -143,7 +143,7 @@ function CoinsDetail({ dataCoins }: any) {
                     mb='5px'
                     href={item}
                     isExternal>
-                    {item}
+                    site {index + 1}
                     <FiExternalLink />
                   </Link>
                 )}

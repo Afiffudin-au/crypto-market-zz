@@ -2,7 +2,9 @@ import { Tr, Td, Text, Box, Image } from '@chakra-ui/react'
 import React from 'react'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp'
+import { useRouter } from 'next/dist/client/router'
 interface CoinTableItems {
+  id: string
   index: number
   image: string
   name: string
@@ -47,6 +49,7 @@ const Percentage = ({ percent }: { percent: number }) => {
   )
 }
 function CoinTableItem({
+  id,
   index,
   image,
   name,
@@ -56,9 +59,13 @@ function CoinTableItem({
   marketCap,
   totalVolume,
 }: Required<CoinTableItems>) {
+  const router = useRouter()
+  const handleDetail = () => {
+    router.push(`/coins/${id}`)
+  }
   return (
     <>
-      <Tr cursor='pointer' borderColor='blue.800'>
+      <Tr onClick={handleDetail} cursor='pointer' borderColor='blue.800'>
         <Td>
           <Text fontSize='sm' fontWeight='bold' color='blue.600'>
             {index}
@@ -67,33 +74,39 @@ function CoinTableItem({
         <Td>
           <Box display='flex' alignItems='center' boxSize='24px'>
             <Image src={image} alt={name} marginRight='5px' />
-            <Text fontWeight='semibold' fontSize='14px' marginRight='5px'>
+            <Text
+              fontWeight='semibold'
+              fontSize={{ base: '12px', sm: '14px' }}
+              marginRight='5px'>
               {name}
             </Text>
             <Text
               whiteSpace='nowrap'
               textTransform='uppercase'
               fontWeight='semibold'
-              fontSize='14px'
+              fontSize={{ base: '12px', sm: '14px' }}
               color='rgb(128, 138, 157)'>
               {symbol}
             </Text>
           </Box>
         </Td>
         <Td>
-          <Text whiteSpace='nowrap' fontSize='14px' fontWeight='bold'>
+          <Text
+            whiteSpace='nowrap'
+            fontSize={{ base: '12px', sm: '14px' }}
+            fontWeight='bold'>
             {formatNumber(price)}
           </Text>
         </Td>
-        <Td>
+        <Td display={{ base: 'none', sm: 'none', md: 'table-cell' }}>
           <Percentage percent={pricePercentage24h} />
         </Td>
-        <Td>
+        <Td display={{ base: 'none', sm: 'none', lg: 'table-cel' }}>
           <Text whiteSpace='nowrap' fontSize='14px' fontWeight='bold'>
             {formatNumber(marketCap)}
           </Text>
         </Td>
-        <Td>
+        <Td display={{ base: 'none', sm: 'none', lg: 'table-cell' }}>
           <Text whiteSpace='nowrap' fontSize='14px' fontWeight='bold'>
             {formatNumber(totalVolume)}
           </Text>

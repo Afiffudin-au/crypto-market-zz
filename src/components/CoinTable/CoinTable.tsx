@@ -3,6 +3,7 @@ import CoinTableItem from './CoinTableItem'
 import { useState } from 'react'
 import { BiSort } from 'react-icons/bi'
 interface DataCoins {
+  id: string
   name: string
   image: string
   current_price: number
@@ -40,6 +41,7 @@ function CoinTable({ dataCoins }: { dataCoins: Required<any> }) {
       setBy('ascending')
     }
   }
+  console.log(orderDataCoins)
   return (
     <Box border='1px' borderColor='gray.300' borderRadius='8'>
       <Table variant='simple'>
@@ -55,14 +57,21 @@ function CoinTable({ dataCoins }: { dataCoins: Required<any> }) {
               <TextItem label='price' />
             </Th>
             <Th
+              display={{ base: 'none', sm: 'none', md: 'table-cell' }}
               cursor='pointer'
               onClick={() => handleSort('price_change_percentage_24h')}>
               <TextItem label='24h %' />
             </Th>
-            <Th cursor='pointer' onClick={() => handleSort('market_cap')}>
+            <Th
+              display={{ base: 'none', sm: 'none', lg: 'table-cell' }}
+              cursor='pointer'
+              onClick={() => handleSort('market_cap')}>
               <TextItem label='Market Cap' />
             </Th>
-            <Th cursor='pointer' onClick={() => handleSort('total_volume')}>
+            <Th
+              display={{ base: 'none', sm: 'none', lg: 'table-cel' }}
+              cursor='pointer'
+              onClick={() => handleSort('total_volume')}>
               <TextItem label='Total Volume' />
             </Th>
           </Tr>
@@ -70,6 +79,7 @@ function CoinTable({ dataCoins }: { dataCoins: Required<any> }) {
         <Tbody>
           {orderDataCoins?.map((item: DataCoins, index: number) => (
             <CoinTableItem
+              id={item.id}
               index={index + 1}
               key={index}
               image={item.image}

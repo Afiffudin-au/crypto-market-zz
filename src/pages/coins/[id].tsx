@@ -6,7 +6,6 @@ import DeveloperCard from '../../components/DeveloperCard/DeveloperCard'
 import BlockChainSites from '../../components/BlockChainSites/BlockChainSites'
 
 function CoinsDetail({ dataCoins }: any) {
-  console.log(dataCoins)
   return (
     <div className={styles.dataCoins}>
       <Flex

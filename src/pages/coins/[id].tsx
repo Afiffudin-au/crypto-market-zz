@@ -4,10 +4,17 @@ import { Image } from '@chakra-ui/image'
 import CommunityCard from '../../components/CommunityCard/CommunityCard'
 import DeveloperCard from '../../components/DeveloperCard/DeveloperCard'
 import BlockChainSites from '../../components/BlockChainSites/BlockChainSites'
+import Head from 'next/head'
 
 function CoinsDetail({ dataCoins }: any) {
   return (
     <div className={styles.dataCoins}>
+      <Head>
+        <meta
+          name='description'
+          content='Find thousands of different cryptocurrencies here, compare prices, find the best one, and see realtime cryptocurrency orders'
+        />
+      </Head>
       <Flex
         flexDirection={{ base: 'column', md: 'row' }}
         gridGap='5px'

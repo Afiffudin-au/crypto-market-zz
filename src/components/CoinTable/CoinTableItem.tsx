@@ -74,6 +74,7 @@ function CoinTableItem({
         <Td>
           <Box display='flex' alignItems='center' boxSize='24px'>
             <Image src={image} alt={name} marginRight='5px' />
+
             <Text
               fontWeight='semibold'
               fontSize={{ base: '12px', sm: '14px' }}

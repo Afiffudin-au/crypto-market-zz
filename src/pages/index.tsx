@@ -26,6 +26,11 @@ export default function Home() {
       <Head>
         <title>Create Next App</title>
         <link rel='icon' href='/favicon.ico' />
+
+        <meta
+          name='description'
+          content='Find thousands of different cryptocurrencies here, compare prices, find the best one, and see realtime cryptocurrency orders'
+        />
       </Head>
       <Layout>
         {isFetching && (

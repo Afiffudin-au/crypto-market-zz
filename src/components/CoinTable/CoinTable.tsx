@@ -41,7 +41,6 @@ function CoinTable({ dataCoins }: { dataCoins: Required<any> }) {
       setBy('ascending')
     }
   }
-  console.log(orderDataCoins)
   return (
     <Box border='1px' borderColor='gray.300' borderRadius='8'>
       <Table variant='simple'>

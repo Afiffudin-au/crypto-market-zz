@@ -1,5 +1,5 @@
 import { Tr, Td, Text, Box, Image } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp'
 import { useRouter } from 'next/dist/client/router'
@@ -59,9 +59,15 @@ function CoinTableItem({
   marketCap,
   totalVolume,
 }: Required<CoinTableItems>) {
+  const [imageLoad, setImageLoad] = useState<boolean>(false)
+  const [display, setDisplay] = useState<string>('none')
   const router = useRouter()
   const handleDetail = () => {
     router.push(`/coins/${id}`)
+  }
+  const handleImageLoad = () => {
+    setImageLoad(true)
+    setDisplay('block')
   }
   return (
     <>
@@ -73,7 +79,16 @@ function CoinTableItem({
         </Td>
         <Td>
           <Box display='flex' alignItems='center' boxSize='24px'>
-            <Image src={image} alt={name} marginRight='5px' />
+            {!imageLoad && (
+              <Image src={'/25x25.png'} alt={name} marginRight='5px' />
+            )}
+            <Image
+              onLoad={handleImageLoad}
+              display={display}
+              src={image}
+              alt={name}
+              marginRight='5px'
+            />
 
             <Text
               fontWeight='semibold'

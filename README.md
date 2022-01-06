@@ -1,6 +1,9 @@
 ## Desc
 crypto market, will display crypto statistics in real time. This application is made using nextjs and for realtime data retrieval I use react-query. Statistics are displayed in the form of a table which will display name, price, market cap, 24H %, total volume. As usual, table statistics can be sorted (ascending and descending) and pagenation.
 
+## Note
+Most of my projects are of the private type, but for now and so on I will make my projects public freely.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

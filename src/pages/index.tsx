@@ -31,6 +31,7 @@ export default function Home() {
           name='description'
           content='Find thousands of different cryptocurrencies here, compare prices, find the best one, and see realtime cryptocurrency orders'
         />
+	<meta name="google-site-verification" content="Gy8DecfJhmdkMec5xQrsKKV6mriP35Ynkhxl1_eX3oU" />
       </Head>
       <Layout>
         {isFetching && (

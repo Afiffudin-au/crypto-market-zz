@@ -1,7 +1,6 @@
 import { Tr, Td, Text, Box, Image } from '@chakra-ui/react'
 import React, { useCallback, useState } from 'react'
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
-import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp'
+import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io'
 import { useRouter } from 'next/dist/client/router'
 interface CoinTableItems {
   id: string
@@ -36,12 +35,12 @@ const Percentage = ({ percent }: { percent: number }) => {
     <Text color={color} fontSize='14px' fontWeight='bold'>
       {color === 'green.500' ? (
         <>
-          <ArrowDropUpIcon />
+          <IoMdArrowDropup />
           {formatPercent}
         </>
       ) : (
         <>
-          <ArrowDropDownIcon />
+          <IoMdArrowDropdown />
           {formatPercent}
         </>
       )}

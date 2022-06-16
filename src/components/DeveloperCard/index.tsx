@@ -1,6 +1,5 @@
 import React from 'react'
 import { Badge, Box, Flex, Text } from '@chakra-ui/layout'
-import styles from './coinsDetail.module.scss'
 import { AiFillStar, AiOutlineIssuesClose } from 'react-icons/ai/index'
 import { Tag } from '@chakra-ui/tag'
 import { BiGitRepoForked } from 'react-icons/bi/index'

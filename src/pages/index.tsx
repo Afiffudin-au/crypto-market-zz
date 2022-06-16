@@ -24,7 +24,7 @@ export default function Home() {
       {isLoading && <Progress size='xs' />}
       {isError && <Text color='red.500'>Error</Text>}
       <Head>
-        <title>Create Next App</title>
+        <title>Crypto Market ZZ - tosulafiffudin.com</title>
         <link rel='icon' href='/favicon.ico' />
 
         <meta

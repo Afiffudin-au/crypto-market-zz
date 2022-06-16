@@ -5,8 +5,8 @@ import Head from 'next/head'
 import { useState } from 'react'
 import { QueryClient, useQuery } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
-import CoinTable from '../components/CoinTable/CoinTable'
-import Layout from '../components/Layout/Layout'
+import CoinTable from '../components/CoinTable'
+import Layout from '../components/Layout'
 import styles from '../styles/Home.module.css'
 import { Button } from '@chakra-ui/react'
 export default function Home() {
@@ -31,7 +31,10 @@ export default function Home() {
           name='description'
           content='Find thousands of different cryptocurrencies here, compare prices, find the best one, and see realtime cryptocurrency orders'
         />
-	<meta name="google-site-verification" content="Gy8DecfJhmdkMec5xQrsKKV6mriP35Ynkhxl1_eX3oU" />
+        <meta
+          name='google-site-verification'
+          content='Gy8DecfJhmdkMec5xQrsKKV6mriP35Ynkhxl1_eX3oU'
+        />
       </Head>
       <Layout>
         {isFetching && (
@@ -76,12 +79,16 @@ export default function Home() {
 const getCoins = async (page = 1) => {
   const URL = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=40&page=${page}`
   const response = await fetch(URL)
+  if (!response.ok) {
+    throw new Error('Fetching Error')
+  }
   return await response.json()
 }
 //SSR hydrate
 export async function getStaticProps() {
   const queryClient = new QueryClient()
   await queryClient.prefetchQuery(['coins', 1], () => getCoins())
+
   return {
     props: {
       dehydratedState: dehydrate(queryClient),

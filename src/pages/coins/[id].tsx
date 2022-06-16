@@ -1,9 +1,9 @@
 import { Flex } from '@chakra-ui/layout'
-import styles from './coinsDetail.module.scss'
+import styles from './coinsDetail.module.css'
 import { Image } from '@chakra-ui/image'
-import CommunityCard from '../../components/CommunityCard/CommunityCard'
-import DeveloperCard from '../../components/DeveloperCard/DeveloperCard'
-import BlockChainSites from '../../components/BlockChainSites/BlockChainSites'
+import CommunityCard from '../../components/CommunityCard'
+import DeveloperCard from '../../components/DeveloperCard'
+import BlockChainSites from '../../components/BlockChainSites'
 import Head from 'next/head'
 
 function CoinsDetail({ dataCoins }: any) {

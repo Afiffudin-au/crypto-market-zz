@@ -1,5 +1,5 @@
 import { Tr, Td, Text, Box, Image } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp'
 import { useRouter } from 'next/dist/client/router'
@@ -48,6 +48,7 @@ const Percentage = ({ percent }: { percent: number }) => {
     </Text>
   )
 }
+
 function CoinTableItem({
   id,
   index,
@@ -65,10 +66,11 @@ function CoinTableItem({
   const handleDetail = () => {
     router.push(`/coins/${id}`)
   }
-  const handleImageLoad = () => {
+  const handleImageLoad = useCallback(() => {
     setImageLoad(true)
     setDisplay('block')
-  }
+  }, [imageLoad, display])
+
   return (
     <>
       <Tr onClick={handleDetail} cursor='pointer' borderColor='blue.800'>

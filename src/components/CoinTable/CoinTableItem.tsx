@@ -68,8 +68,7 @@ function CoinTableItem({
   const handleImageLoad = useCallback(() => {
     setImageLoad(true)
     setDisplay('block')
-  }, [imageLoad, display])
-
+  }, [])
   return (
     <>
       <Tr onClick={handleDetail} cursor='pointer' borderColor='blue.800'>

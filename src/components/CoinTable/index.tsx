@@ -32,6 +32,7 @@ const TextItem = ({ label, icon = true }: any) => {
 function CoinTable({ dataCoins }: { dataCoins: Required<any> }) {
   const [direction, setDirection] = useState<string | null>('')
   const [key, setKey] = useState('')
+  const orderedCoins = orderBy(dataCoins, key, direction)
   const switchDirection = () => {
     if (!direction) {
       setDirection('descending')
@@ -46,7 +47,6 @@ function CoinTable({ dataCoins }: { dataCoins: Required<any> }) {
     setKey(value)
   }
   const memoizedCoins = useMemo(() => {
-    const orderedCoins = orderBy(dataCoins, key, direction)
     return orderedCoins?.map((item: DataCoins, index: number) => (
       <CoinTableItem
         id={item.id}
@@ -61,7 +61,7 @@ function CoinTable({ dataCoins }: { dataCoins: Required<any> }) {
         totalVolume={item.total_volume}
       />
     ))
-  }, [dataCoins, key, direction])
+  }, [orderedCoins, key, direction])
   return (
     <Box border='1px' borderColor='gray.300' borderRadius='8'>
       <Table variant='simple'>
